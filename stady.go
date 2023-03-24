@@ -10,6 +10,10 @@ import (
 	// 利用パッケージ名
 	"fmt"
 
+	//一度に複数のパッケージをインポート可能
+	"goland/sub"
+
+
 )
 
 // 関数の外でvarによる変数宣言可能
@@ -20,6 +24,7 @@ var outF string = "out of function"
 func example() {
 	ss := "example function";
 	fmt.Println(ss)
+	sub.HelloGo()
 }
 
 
