@@ -24,7 +24,13 @@ var outF string = "out of function"
 func example() {
 	ss := "example function";
 	fmt.Println(ss)
+
+	// subパッケージの関数呼び出し
+	// 外部関数名を呼び出すときは、先頭が『大文字』でなければいけない。
+	// Goでは、最初の文字が大文字で始まる名前は、外部のパッケージから参照できるエクスポート（公開）された名前( exported name )です。
 	sub.HelloGo()
+	sub.ZV()
+	sub.TypeConversion()
 }
 
 
