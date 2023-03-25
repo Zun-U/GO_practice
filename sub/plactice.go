@@ -24,7 +24,9 @@ func HelloGo() {
 	fmt.Printf("Type: %T Value :%v\n", boolin, boolin)
 	fmt.Printf("Type: %T Value :%v\n", b1, b1)
 	fmt.Printf("Type: %T Value :%v\n", f1, f1)
-
+	fmt.Println(needInt(small))
+	fmt.Println(needFloat(small))
+	fmt.Println(needFloat(big))
 }
 
 
@@ -187,3 +189,75 @@ func TypeConversion() {
 	fmt.Printf("Type: %T Value :%v\n", second,second)
 	fmt.Printf("Type: %T Value :%v\n", third, third)
 }
+
+
+// 型変換のシンプルな記述
+func TypeConversionSimple() {
+
+	x, y := 3, 4
+	f := math.Sqrt(float64(x*x + y*y))
+	z := uint(f)
+
+	fmt.Println(x, y, z)
+
+}
+
+
+
+// 暗黙的な変数宣言の型指定
+func TypeInterfaceJob() {
+
+	// 数字ならint型
+	v := 123
+
+	// 小数ならfloat型
+	s := 1.23
+
+	// 複素数complex128型 ※float64の実数部と、虚数を持つ複素数
+	c := 0.867 + 0.5i
+
+	// ダブルクォテーション("")で囲まれた値ならstring型
+	d := "文字列型だよ"
+
+	fmt.Printf("Type: %T Value :%v\n", v, v)
+	fmt.Printf("Type: %T Value :%v\n", s, s)
+	fmt.Printf("Type: %T Value :%v\n", c, c)
+	fmt.Printf("Type: %T Value :%v\n", d, d)
+
+}
+
+
+
+// 定数(constant)
+const Pis = 3.14
+
+func ClCons() {
+
+	// 定数は、文字(character)、文字列(string)、boolean、数値(numeric)のみで使える。
+	const World = "世界"
+
+	const Truth = true
+
+	fmt.Println("This is ", Pis)
+	fmt.Println("ここは異", World, "です")
+	fmt.Println("ああ、その通り。", Truth)
+}
+
+
+
+// Numeric Constants
+// 数値の定数は、高精度な値(values)
+
+const (
+	big = 1 << 100
+	small =big >> 99
+)
+
+func needInt(x int) int {
+	return x*10 + 1
+}
+
+func needFloat(x float64) float64 {
+	return x * 0.1
+}
+

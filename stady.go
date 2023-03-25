@@ -13,6 +13,8 @@ import (
 	//一度に複数のパッケージをインポート可能
 	"goland/sub"
 
+	"goland/Controller"
+
 
 )
 
@@ -31,6 +33,11 @@ func example() {
 	sub.HelloGo()
 	sub.ZV()
 	sub.TypeConversion()
+	sub.TypeConversionSimple()
+	sub.TypeInterfaceJob()
+	sub.ClCons()
+
+	controller_test.Controllers_yes()
 }
 
 
