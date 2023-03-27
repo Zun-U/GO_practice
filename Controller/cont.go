@@ -15,6 +15,8 @@ func Controllers_yes() {
 	fmt.Println(Pow(3, 2, 10), Pow(3, 3, 10))
 	fmt.Println(PowPow(3, 2, 10), PowPow(3, 3, 10))
 	fmt.Println(LoopFunc(2))
+	SwitchFuncs()
+
 }
 
 func ForCont(x int) int {
@@ -151,18 +153,23 @@ func LoopFunc(x float64) float64 {
 }
 
 
-// Switch
-func SwitchFunc() {
+// Switch --if elseステートメントのシーケンスを短く書く方法
+func SwitchFuncs() {
 
-	fmt.Print("Go runs on ")
+	fmt.Println("Go runs on ")
 
-	switch os := runtime.GOOS; os {
-	case "darwin":
+	switch os := runtime.GOOS; os{
+
+		// Goのswitchは条件に合うものだけ選択され、実行される。他のcaseは実行されない。
+		// ※Goでは自動でbreakが行われる。
+		// また、caseは定数である必要がなく、関係する値は整数である必要もない。
+	case  "darwin":
 		fmt.Println("OS X.")
-	case "linux":
-		fmt.Println("Linux.")
+	case  "linux":
+		fmt.Println("Linux")
 	default:
 		fmt.Printf("%s.\n", os)
 	}
 
 }
+

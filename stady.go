@@ -14,7 +14,8 @@ import (
 	"goland/sub"
 
 	// 自作パッケージのインポートは<モジュール名（go.modのmodule）>/<フォルダ名>
-	"goland/Controller"
+	// フォルダ名は"小文字"
+	"goland/controller"
 
 
 )
