@@ -13,6 +13,7 @@ import (
 	//一度に複数のパッケージをインポート可能
 	"goland/sub"
 
+	// 自作パッケージのインポートは<モジュール名（go.modのmodule）>/<フォルダ名>
 	"goland/Controller"
 
 
@@ -37,6 +38,7 @@ func example() {
 	sub.TypeInterfaceJob()
 	sub.ClCons()
 
+	// パッケージ名.関数名で関数の呼び出し
 	controller_test.Controllers_yes()
 }
 
