@@ -17,6 +17,7 @@ import (
 	// フォルダ名は"小文字"
 	"goland/controller"
 
+	"goland/memory"
 
 )
 
@@ -41,6 +42,9 @@ func example() {
 
 	// パッケージ名.関数名で関数の呼び出し
 	controller_test.Controllers_yes()
+
+	memory_test.Main()
+	memory_test.PointerTest()
 }
 
 
