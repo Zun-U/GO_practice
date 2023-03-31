@@ -14,6 +14,9 @@ func Main() {
 	fmt.Println("This package is pointer")
 	PointerExample(10)
 	PointerVar(&n)
+	fmt.Println(Vertex{1, 2})
+	AccessStruct()
+	fmt.Println(v1, p, v2, v3)
 }
 
 
@@ -62,9 +65,13 @@ func PointerTest(){
 	// ※つまり演算子じゃない方
 	p := &i
 
+	// ポインタpを通してiから値を読みだす。
 	fmt.Println(*p)
 
+	// ポインタpを通してiへ代入する。
 	*p = 21
+
+	// これらを"dereferencing" または "indirecting"として知られている。
 
 	fmt.Println(i)
 
@@ -76,3 +83,51 @@ func PointerTest(){
 
 
 }
+
+
+// Structs（構造体）
+// Struct（構造体）はfield(フィールドの集まり)
+type Vertex struct {
+	X int
+	Y int
+}
+
+// structフィールドは、ドット(.)を用いてアクセスします。
+func AccessStruct() {
+	v := Vertex{1, 2}
+	v.X = 4
+	fmt.Println(v.X)
+}
+
+// Struct Literals
+type Zertex struct {
+	X, Y int
+}
+
+
+// リテラル(literal)
+// ソースコードに直接記載する値
+// ・整数リテラル
+// ・浮動小数点リテラル
+// ・イマジナリリテラル
+// ・ルーンリテラル
+// ・文字列リテラル
+
+// structの初期値の『割り当て』を示している。
+var (
+
+	// Zertex型
+	v1 = Zertex{1, 2}
+
+	// 「X: 1」は、Xだけを初期化している。
+	// 「Y: 0」 が暗黙的に宣言されている。
+	v2 = Zertex{X: 1}
+
+	// 「X: 0」と「Y: 0」が暗黙的に宣言されている。
+	v3 = Zertex{}
+
+	// *Zertex型。
+	// structへのポインタを戻す。
+	p = &Zertex{1, 2}
+
+)
