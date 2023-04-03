@@ -22,6 +22,8 @@ func Main() {
 	SL()
 	SlaR()
 	SliDef()
+	SLaC()
+	NilS()
 }
 
 
@@ -207,7 +209,7 @@ func SlaR() {
 
 
 
-// Slice literals
+//　❐❐ Slice literals
 func SL() {
 
 	// これは配列のリテラル。
@@ -268,5 +270,53 @@ func SliDef() {
 	fmt.Println(a[0:])
 	fmt.Println(a[:])
 
+}
+
+
+// Slice lenghth and capacity
+func SLaC() {
+
+	// スライスは長さ(length)と容量(capacity)の両方を持っている。
+	// スライスの長さは、持っている要素の『数』
+	// スライスの容量は、『スライスの最初から数えて』、元となる配列の要素数。
+	s := []int{2, 3, 5, 7, 11, 13}
+	printSlice(s) //len = 6, cap = 6
+
+	// Slice the slice to give it zero length
+	s = s[:0]
+	printSlice(s) // len = 0, cap = 6
+
+	// Extends its length
+	s = s[:4]
+	printSlice(s) // len = 4, cap = 6
+
+	// Drop its first two values
+	s = s[2:]
+	printSlice(s) //len = 2, cap = 4
+
+
+}
+
+func printSlice(s []int) {
+
+	// スライス"s"の長さと容量はlen(s)とcap(s)という式を利用して得ることができる。
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+
+
+
+
+// Nil slice
+func NilS() {
+
+	// スライスのゼロ値は『nil』。
+	// nilスライスは『0』の長さと容量を持ち、何の元となる配列を持っていない。
+	var c []int
+	fmt.Println(c, len(c), cap(c))
+
+
+	if c == nil {
+		fmt.Println("nil")
+	}
 
 }
