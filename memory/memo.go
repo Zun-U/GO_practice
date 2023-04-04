@@ -24,6 +24,7 @@ func Main() {
 	SliDef()
 	SLaC()
 	NilS()
+	CreateSlice()
 }
 
 
@@ -319,4 +320,31 @@ func NilS() {
 		fmt.Println("nil")
 	}
 
+}
+
+// Creating a slice with make
+func CreateSlice() {
+
+	// スライスは、組み込みの『make』関数を使用して作成可能。
+	// 動的サイズの配列を作成する方法になる。
+	// 『make』関数はゼロ化された配列を”割り当て”、その配列を指すスライスを”返す”。
+	a := make([]int, 5)
+	printSliceX("a", a)
+
+	// makeの三番目の引数に、スライスの容量(capacity)を指定できる。
+	// cap()で、スライスの容量を返す。
+	b := make([]int, 0, 5)
+	printSliceX("b", b)
+
+	c := b[:5]
+	printSliceX("c", c)
+
+	d := c[2:5]
+	printSliceX("d", d)
+
+
+}
+
+func printSliceX(s string, x []int) {
+	fmt.Printf("%s len=%d cap=%d %v\n", s, len(x), cap(x), x)
 }
