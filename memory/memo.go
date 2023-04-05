@@ -3,7 +3,7 @@ package memory_test
 import (
 
 	"fmt"
-
+	"strings"
 )
 
 func Main() {
@@ -25,6 +25,7 @@ func Main() {
 	SLaC()
 	NilS()
 	CreateSlice()
+	Slisli()
 }
 
 
@@ -342,9 +343,37 @@ func CreateSlice() {
 	d := c[2:5]
 	printSliceX("d", d)
 
-
 }
 
 func printSliceX(s string, x []int) {
 	fmt.Printf("%s len=%d cap=%d %v\n", s, len(x), cap(x), x)
 }
+
+
+
+func Slisli() {
+
+	// Create a tic-tic-toe board.
+	// スライスは、『他のスライスを含む任意の型』を含むことができる。
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+
+	// The players take turns.
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
+
+}
+
+
+// Appending to a slice
