@@ -26,6 +26,7 @@ func Main() {
 	NilS()
 	CreateSlice()
 	Slisli()
+	ApndSli()
 }
 
 
@@ -377,3 +378,26 @@ func Slisli() {
 
 
 // Appending to a slice
+func ApndSli() {
+	var s []int
+	printSliceY(s)
+
+	// append works on nil slices
+	// Goの組み込みのappendは、要素をスライスの最後に追加する。
+	// func append(slice [] Type , elems ... Type ) [] Type
+	// appendの戻り値は、追加元のスライスと追加する変数群を併せたスライスになる。
+	s = append(s, 0)
+	printSliceY(s)
+
+	// The slice grows as needed
+	s = append(s, 1)
+	printSliceY(s)
+
+	//We can add more than one element at a time
+	s = append(s, 2, 3, 4)
+	printSliceY(s)
+}
+
+func printSliceY(s []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
