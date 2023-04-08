@@ -27,6 +27,7 @@ func Main() {
 	CreateSlice()
 	Slisli()
 	ApndSli()
+	PowErt()
 }
 
 
@@ -400,4 +401,17 @@ func ApndSli() {
 
 func printSliceY(s []int) {
 	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+
+// Range
+var powop = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+func PowErt() {
+
+	// forループに利用するrangeは、スライスや、マップ(map)を"ひとつずつ反復処理する"ために使う。
+	// スライスをrangeで繰り返す場合、rangeは反復ごとに２つの変数を返す。
+	// 一つ目の変数はインデックス(index)で、二つ目はインデックスの場所の要素のコピー。
+	for i, v := range powop {
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
 }
