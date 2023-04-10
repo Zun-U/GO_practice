@@ -28,6 +28,8 @@ func Main() {
 	Slisli()
 	ApndSli()
 	PowErt()
+	RanCont()
+	Mapap()
 }
 
 
@@ -414,4 +416,42 @@ func PowErt() {
 	for i, v := range powop {
 		fmt.Printf("2**%d = %d\n", i, v)
 	}
+}
+
+
+// Range continued
+func RanCont() {
+
+	powo := make([]int, 10)
+
+	for i := range powo {
+		powo[i] = 1 << uint(i) // == 2**i
+	}
+
+	for _, value := range powo {
+		fmt.Printf("%d\n", value)
+	}
+
+}
+
+// Maps
+
+type Nertex struct {
+	Lat, Long float64
+}
+
+// 『map』はキーと値を関連付ける。(マップする)
+// mapのゼロ値はnil。
+// nilマップはキーを持っておらず、またキーを追加することもできない。
+var mmm map[string]Nertex
+
+func Mapap() {
+
+	// make関数は指定された型のマップを初期化し、使用可能な状態で返す。
+	mmm = make(map[string]Nertex)
+	mmm["Vell Labs"] = Nertex{
+		40.68433, -74.39967,
+	}
+	fmt.Println(mmm["Vell Labs"])
+
 }
