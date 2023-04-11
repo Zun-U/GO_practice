@@ -79,7 +79,7 @@ func PointerTest(){
 	p := &i
 
 	// ポインタpを通してiから値を読みだす。
-	fmt.Println(*p)
+	fmt.Println(*p,"変数iのポインタ")
 
 	// ポインタpを通してiへ代入する。
 	*p = 21
