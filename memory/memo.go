@@ -1,7 +1,6 @@
 package memory_test
 
 import (
-
 	"fmt"
 	"strings"
 )
@@ -15,6 +14,7 @@ func Main() {
 	PointerExample(10)
 	PointerVar(&n)
 	fmt.Println(Vertex{1, 2})
+	StructPointer()
 	AccessStruct()
 	fmt.Println(v1, p, v2, v3)
 	PremsArr()
@@ -31,7 +31,6 @@ func Main() {
 	RanCont()
 	Mapap()
 }
-
 
 // Pointer
 func PointerExample(z int) {
@@ -51,7 +50,6 @@ func PointerExample(z int) {
 
 }
 
-
 // Pointer Var
 func PointerVar(y *int) {
 
@@ -63,12 +61,10 @@ func PointerVar(y *int) {
 	fmt.Println(*y)
 }
 
-
-
 // Goはポインタを扱う。
 // ポインタの値はメモリアドレスを指す。
 // 変数「T」のポインタは、*T型で、ゼロ値はnil。
-func PointerTest(){
+func PointerTest() {
 
 	i, j := 42, 2701
 
@@ -79,22 +75,20 @@ func PointerTest(){
 	p := &i
 
 	// ポインタpを通してiから値を読みだす。
-	fmt.Println(*p,"変数iのポインタ")
-
+	fmt.Println(*p, "『変数iのポインタ』")
+	fmt.Println(p, "『変数iのアドレス』")
 	// ポインタpを通してiへ代入する。
 	*p = 21
 
 	// これらを"dereferencing" または "indirecting"として知られている。
 
-	fmt.Println(i)
+	fmt.Println(i, "『ポインタpを通して参照元の値が書き換わる』")
 
 	p = &j
-	*p = *p /37
+	*p = *p / 37
 	fmt.Println(j)
 
-
 }
-
 
 // Structs（構造体）
 // Struct（構造体）はfield(フィールドの集まり)
@@ -107,14 +101,33 @@ type Vertex struct {
 func AccessStruct() {
 	v := Vertex{1, 2}
 	v.X = 4
-	fmt.Println(v.X)
+	fmt.Println(v.X, "『ドット(.)で構造体のフィールドにアクセスできる。Vertexの「X」にアクセス』")
 }
+
+
+// Pointer to struct
+func StructPointer()  {
+
+	v := Vertex{1, 2}
+	println(v.X,"『構造体Vartex』を変数vに格納。フィールドXにアクセス。』")
+
+	p := &v
+	println(p, "『構造体Vartexのフィールドへのメモリアクセス。』")
+
+	p.X = 1e9
+	fmt.Println(p.X, "『構造体VartextのフィールドXの値の書きかえ』")
+
+	fmt.Println(v, "『構造体Vartextを呼び出したときに、中のXも書き換わっている。』")
+
+
+
+}
+
 
 // Struct Literals
 type Zertex struct {
 	X, Y int
 }
-
 
 // リテラル(literal)
 // ソースコードに直接記載する値
@@ -140,7 +153,6 @@ var (
 	// *Zertex型。
 	// structへのポインタを戻す。
 	p = &Zertex{1, 2}
-
 )
 
 // Arrays
@@ -152,14 +164,12 @@ func PremsArr() {
 	a[0] = "hello"
 	a[1] = "World"
 
-	fmt.Println(a[0], a[1])
-	fmt.Println(a)
-
+	fmt.Println(a[0], a[1],"『a[0]』=helloとa[1]のWorldを出力』")
+	fmt.Println(a,"『配列a』に存在する[0][1]に格納されている文字列両方を出力。※その配列全体を出力。")
 
 	primes := [6]int{2, 3, 5, 7, 11, 13}
-	fmt.Println(primes[2])
+	fmt.Println(primes[2],"『配列の長さは0から始まる。0,1,2,3...』")
 	fmt.Println(primes)
-
 
 	// 配列の長さは、型の一部のため、配列のサイズを変えることは出来ない。
 
@@ -174,15 +184,16 @@ func Slicer() {
 	primes := [6]int{2, 3, 5, 7, 11, 13}
 
 	// コロンで区切られた二つのインデックスlowとhighの境界を指定することによってスライスが形成される。
-	// a[low : high]
+	// ❐❐❐　a[low : high]　❐❐❐
 	// 最初の要素は含み、最後の要素を除いた半開区間を選択する。
 	var s []int = primes[1:4] // 3,5,7
 
 	// インデックス番号1～4で、1は含み、4は含まない。
 	// つまりは1，2，3のインデックス番号を選択している。
 
-	fmt.Println(s)
+	fmt.Println(s,"『スライスsは配列primesのスライス。配列primesの[1][2][3]に格納されている値をスライスsが【参照】している。=> primes[1:4]』")
 
+	// つまり、スライスは配列のポインタ変数。
 }
 
 // Slices are like reference to
@@ -195,17 +206,16 @@ func SlaR() {
 		"melon",
 	}
 
-	fmt.Println(names)
+	fmt.Println(names,"『配列names』")
 
 	// スライスは配列の参照の様なもの。
 	// スライスはどんなデータも『格納しておらず』、単に元の配列の『部分列を指し』ているだけ。
 	a := names[0:2] //a[0] = "ringo", a[1] = "mikan"
 	b := names[1:3] //b[0] = "mikan", b[2] = "banana"
-	fmt.Println(a, b)
+	fmt.Println(a, b,"『スライスa => names[0:2]』、スライスb => names[1:3]』")
 
 	// スライスの要素を変更すると、そのもととなる配列の対応する要素が変更される。
 	b[0] = "XXX" // before change, b[0] = "mikan"
-
 
 	fmt.Println(a, b)
 
@@ -213,9 +223,7 @@ func SlaR() {
 	fmt.Println(names)
 }
 
-
-
-//　❐❐ Slice literals
+// 　❐❐ Slice literals
 func SL() {
 
 	// これは配列のリテラル。
@@ -233,7 +241,6 @@ func SL() {
 	r := []bool{true, false, true, true, false, true}
 	fmt.Println(r)
 
-
 	s := []struct {
 		n int
 		b bool
@@ -250,8 +257,6 @@ func SL() {
 
 }
 
-
-
 // Slice default
 func SliDef() {
 
@@ -264,8 +269,7 @@ func SliDef() {
 	fmt.Println(s) //s[0] = 33, s[1] = 55
 
 	s = s[1:]
-  fmt.Println(s) //s[1] = 55
-
+	fmt.Println(s) //s[1] = 55
 
 	// スライスの既定値は、下限が0、上限はスライスの長さ。
 	a := [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
@@ -277,7 +281,6 @@ func SliDef() {
 	fmt.Println(a[:])
 
 }
-
 
 // Slice lenghth and capacity
 func SLaC() {
@@ -300,7 +303,6 @@ func SLaC() {
 	s = s[2:]
 	printSlice(s) //len = 2, cap = 4
 
-
 }
 
 func printSlice(s []int) {
@@ -309,9 +311,6 @@ func printSlice(s []int) {
 	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
 }
 
-
-
-
 // Nil slice
 func NilS() {
 
@@ -319,7 +318,6 @@ func NilS() {
 	// nilスライスは『0』の長さと容量を持ち、何の元となる配列を持っていない。
 	var c []int
 	fmt.Println(c, len(c), cap(c))
-
 
 	if c == nil {
 		fmt.Println("nil")
@@ -353,8 +351,6 @@ func printSliceX(s string, x []int) {
 	fmt.Printf("%s len=%d cap=%d %v\n", s, len(x), cap(x), x)
 }
 
-
-
 func Slisli() {
 
 	// Create a tic-tic-toe board.
@@ -372,13 +368,11 @@ func Slisli() {
 	board[1][0] = "O"
 	board[0][2] = "X"
 
-
 	for i := 0; i < len(board); i++ {
 		fmt.Printf("%s\n", strings.Join(board[i], " "))
 	}
 
 }
-
 
 // Appending to a slice
 func ApndSli() {
@@ -417,7 +411,6 @@ func PowErt() {
 		fmt.Printf("2**%d = %d\n", i, v)
 	}
 }
-
 
 // Range continued
 func RanCont() {
