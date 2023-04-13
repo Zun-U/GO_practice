@@ -30,6 +30,7 @@ func Main() {
 	PowErt()
 	RanCont()
 	Mapap()
+	MapLit()
 }
 
 // Pointer
@@ -447,4 +448,21 @@ func Mapap() {
 	}
 	fmt.Println(mmm["Vell Labs"])
 
+}
+
+
+
+// Map Literals
+func MapLit() {
+
+	type Varzexs struct {
+		Lat, Long float64
+	}
+
+	var oss = map[string]Varzexs{
+		"Bell Labs": Varzexs{ 40.688433, -74.39967,},
+		"Google": Varzexs{37.42202, -122.08408,},
+	}
+
+	fmt.Println(oss)
 }
