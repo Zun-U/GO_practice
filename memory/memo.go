@@ -357,9 +357,12 @@ func Slisli() {
 	// Create a tic-tic-toe board.
 	// スライスは、『他のスライスを含む任意の型』を含むことができる。
 	board := [][]string{
-		[]string{"_", "_", "_"},
-		[]string{"_", "_", "_"},
-		[]string{"_", "_", "_"},
+		// []string{"_", "_", "_"}, // sliceにおいて型が冗長化している。
+		// []string{"_", "_", "_"},
+		// []string{"_", "_", "_"},
+		{"_", "_", "_"},// 型宣言を省略してコンポジットリテラルを使用
+		{"_", "_", "_"},
+		{"_", "_", "_"},
 	}
 
 	// The players take turns.
@@ -456,12 +459,15 @@ func Mapap() {
 func MapLit() {
 
 	type Varzexs struct {
-		Lat, Long float64
+		Lats, Longs float64
 	}
 
+	// mapリテラルは、structリテラルに似ていますが、 キー ( key )が必要。
 	var oss = map[string]Varzexs{
-		"Bell Labs": Varzexs{ 40.688433, -74.39967,},
-		"Google": Varzexs{37.42202, -122.08408,},
+		// "Bell Labs": Varzexs{ 40.688433, -74.39967,}, // MAP関数において型が冗長化している。Vartexsを省略。
+		"Bell Lab": {40.688433, -74.39967,},
+		// "Google": Varzexs{37.42202, -122.08408,}, // MAP関数において型が冗長化している。Vartexsを省略。
+		"Google": {37.42202, -122.08408,},
 	}
 
 	fmt.Println(oss)
