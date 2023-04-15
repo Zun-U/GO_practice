@@ -31,6 +31,7 @@ func Main() {
 	RanCont()
 	Mapap()
 	MapLit()
+	litMapCont()
 }
 
 // Pointer
@@ -105,12 +106,11 @@ func AccessStruct() {
 	fmt.Println(v.X, "『ドット(.)で構造体のフィールドにアクセスできる。Vertexの「X」にアクセス』")
 }
 
-
 // Pointer to struct
-func StructPointer()  {
+func StructPointer() {
 
 	v := Vertex{1, 2}
-	println(v.X,"『構造体Vartex』を変数vに格納。フィールドXにアクセス。』")
+	println(v.X, "『構造体Vartex』を変数vに格納。フィールドXにアクセス。』")
 
 	p := &v
 	println(p, "『構造体Vartexのフィールドへのメモリアクセス。』")
@@ -120,10 +120,7 @@ func StructPointer()  {
 
 	fmt.Println(v, "『構造体Vartextを呼び出したときに、中のXも書き換わっている。』")
 
-
-
 }
-
 
 // Struct Literals
 type Zertex struct {
@@ -165,11 +162,11 @@ func PremsArr() {
 	a[0] = "hello"
 	a[1] = "World"
 
-	fmt.Println(a[0], a[1],"『a[0]』=helloとa[1]のWorldを出力』")
-	fmt.Println(a,"『配列a』に存在する[0][1]に格納されている文字列両方を出力。※その配列全体を出力。")
+	fmt.Println(a[0], a[1], "『a[0]』=helloとa[1]のWorldを出力』")
+	fmt.Println(a, "『配列a』に存在する[0][1]に格納されている文字列両方を出力。※その配列全体を出力。")
 
 	primes := [6]int{2, 3, 5, 7, 11, 13}
-	fmt.Println(primes[2],"『配列の長さは0から始まる。0,1,2,3...』")
+	fmt.Println(primes[2], "『配列の長さは0から始まる。0,1,2,3...』")
 	fmt.Println(primes)
 
 	// 配列の長さは、型の一部のため、配列のサイズを変えることは出来ない。
@@ -192,7 +189,7 @@ func Slicer() {
 	// インデックス番号1～4で、1は含み、4は含まない。
 	// つまりは1，2，3のインデックス番号を選択している。
 
-	fmt.Println(s,"『スライスsは配列primesのスライス。配列primesの[1][2][3]に格納されている値をスライスsが【参照】している。=> primes[1:4]』")
+	fmt.Println(s, "『スライスsは配列primesのスライス。配列primesの[1][2][3]に格納されている値をスライスsが【参照】している。=> primes[1:4]』")
 
 	// つまり、スライスは配列のポインタ変数。
 }
@@ -207,13 +204,13 @@ func SlaR() {
 		"melon",
 	}
 
-	fmt.Println(names,"『配列names』")
+	fmt.Println(names, "『配列names』")
 
 	// スライスは配列の参照の様なもの。
 	// スライスはどんなデータも『格納しておらず』、単に元の配列の『部分列を指し』ているだけ。
 	a := names[0:2] //a[0] = "ringo", a[1] = "mikan"
 	b := names[1:3] //b[0] = "mikan", b[2] = "banana"
-	fmt.Println(a, b,"『スライスa => names[0:2]』、スライスb => names[1:3]』")
+	fmt.Println(a, b, "『スライスa => names[0:2]』、スライスb => names[1:3]』")
 
 	// スライスの要素を変更すると、そのもととなる配列の対応する要素が変更される。
 	b[0] = "XXX" // before change, b[0] = "mikan"
@@ -360,7 +357,7 @@ func Slisli() {
 		// []string{"_", "_", "_"}, // sliceにおいて型が冗長化している。
 		// []string{"_", "_", "_"},
 		// []string{"_", "_", "_"},
-		{"_", "_", "_"},// 型宣言を省略してコンポジットリテラルを使用
+		{"_", "_", "_"}, // 型宣言を省略してコンポジットリテラルを使用
 		{"_", "_", "_"},
 		{"_", "_", "_"},
 	}
@@ -453,8 +450,6 @@ func Mapap() {
 
 }
 
-
-
 // Map Literals
 func MapLit() {
 
@@ -465,10 +460,30 @@ func MapLit() {
 	// mapリテラルは、structリテラルに似ていますが、 キー ( key )が必要。
 	var oss = map[string]Varzexs{
 		// "Bell Labs": Varzexs{ 40.688433, -74.39967,}, // MAP関数において型が冗長化している。Vartexsを省略。
-		"Bell Lab": {40.688433, -74.39967,},
+		"Bell Lab": {40.688433, -74.39967},
 		// "Google": Varzexs{37.42202, -122.08408,}, // MAP関数において型が冗長化している。Vartexsを省略。
-		"Google": {37.42202, -122.08408,},
+		"Google": {37.42202, -122.08408},
 	}
 
 	fmt.Println(oss)
+}
+
+
+
+// Map literals continued
+func litMapCont() {
+
+	type Certex struct {
+		Las, Lomd float64
+	}
+
+
+	// mapに渡すtop levelの型が単純な型名である場合、リテラルの要素から推定できるため
+	// その型名を省略することができる。
+	var m = map[string]Certex{
+		"LabRatorY": {40.40404, -23.45678},
+		"Golget": {1.23456789, 9.87654321},
+	}
+
+	fmt.Println(m)
 }
