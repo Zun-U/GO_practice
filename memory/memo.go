@@ -32,6 +32,7 @@ func Main() {
 	Mapap()
 	MapLit()
 	litMapCont()
+	Mapmut()
 }
 
 // Pointer
@@ -486,4 +487,38 @@ func litMapCont() {
 	}
 
 	fmt.Println(m)
+}
+
+// Mutating Maps
+func Mapmut() {
+
+	m := make(map[string]int)
+
+	// map mの操作
+	// m へ要素（elem）の挿入や更新
+	// m[key] = elem
+	m["Answer"] = 42
+	fmt.Println("The value:", m["Answer"])
+
+	// elem = m[key]
+	m["Answer"] = 48
+	fmt.Println("The value:", m["Answer"])
+
+	// 要素の削除
+	// delete(m, key)
+	delete(m, "Answer")
+	fmt.Println("The value:", m["Answer"])
+
+	// キーに対する要素が存在するかどうかは、２つ目の値で確認する。
+	// elem, ok = m[key]
+	v, ok := m["Answer"]
+
+	// ※もしelemやokをまだ宣言していなければ、『:=』 で短く宣言できます。
+	// elem, ok := m[key]
+
+	// もし m にkeyがあれば、変数okはtrueとなり、存在しなければ変数okはfalseとなる。
+	fmt.Println("The value:", v, "Present?", ok)
+
+	// なお、mapにkeyが存在しない場合、elemはmapの要素の型のゼロ値となる。
+
 }
