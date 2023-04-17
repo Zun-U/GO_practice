@@ -3,6 +3,7 @@ package memory_test
 import (
 	"fmt"
 	"strings"
+	"math"
 )
 
 func Main() {
@@ -33,6 +34,7 @@ func Main() {
 	MapLit()
 	litMapCont()
 	Mapmut()
+	MathFn()
 }
 
 // Pointer
@@ -520,5 +522,27 @@ func Mapmut() {
 	fmt.Println("The value:", v, "Present?", ok)
 
 	// なお、mapにkeyが存在しない場合、elemはmapの要素の型のゼロ値となる。
+
+}
+
+
+// Function Values
+func Compute(fn func(float64, float64) float64) float64{
+	return fn(3, 4)
+}
+
+func MathFn() {
+
+	// 関数も変数
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+
+	// 関数値(function value)は、関数の引数にとることもできる。
+	// 戻り値としてもりようできる。
+	fmt.Println(hypot(5, 12))
+
+	fmt.Println(Compute(hypot))
+	fmt.Println(Compute(math.Pow))
 
 }
