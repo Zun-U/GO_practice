@@ -234,10 +234,10 @@ func SL() {
 	// スライスのリテラルは『長さのない配列リテラル』の様なもの。
 	exSli := []bool{false, false, false}
 
-	fmt.Println(exArr, exSli)
+	fmt.Println(exArr,"<= [3]bool{true, true, true}", exSli, "<= []bool{false, false, false}")
 
 	q := []int{1, 2, 3, 4, 5, 6}
-	fmt.Println(q)
+	fmt.Println(q,"スライスqは配列q[0=>1, 1=>2, ...]の様な配列を作成し参照している。つまり自作自演")
 
 	r := []bool{true, false, true, true, false, true}
 	fmt.Println(r)
@@ -542,7 +542,8 @@ func MathFn() {
 	// 戻り値としてもりようできる。
 	fmt.Println(hypot(5, 12))
 
-	fmt.Println(Compute(hypot))
+	fmt.Println(Compute(hypot), "変数hypotには関数値が格納されている")
 	fmt.Println(Compute(math.Pow))
 
 }
+
