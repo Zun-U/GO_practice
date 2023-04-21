@@ -19,6 +19,8 @@ import (
 
 	"goland/memory"
 
+
+	"goland/methods"
 )
 
 // 関数の外でvarによる変数宣言可能
@@ -45,6 +47,8 @@ func example() {
 
 	memory_test.Main()
 	memory_test.PointerTest()
+
+	learn_methods.MainMethod()
 }
 
 
