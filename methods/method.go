@@ -25,6 +25,20 @@ func (o Oertex) Abs() float64 {
 
 func MainMethod() {
 
-	ossa := Oertex{3, 4}
-	fmt.Println(ossa.Abs(), "Methods")
+	o := Oertex{3, 4}
+	fmt.Println(o.Abs(), "Methods")
+
+	fmt.Println(Asd(o), "method function")
 }
+
+
+
+// Methods are functions
+// メソッドは、『レシーバ引数を伴う関数』。
+// Asdは上記の例を"関数"として記述している。
+func Asd(o Oertex) float64 {
+
+	return math.Sqrt(o.X*o.X + o.Y*o.Y)
+
+}
+
