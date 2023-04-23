@@ -29,6 +29,9 @@ func MainMethod() {
 	fmt.Println(o.Abs(), "Methods")
 
 	fmt.Println(Asd(o), "method function")
+
+	f := MyFloat(-math.Sqrt2)
+	fmt.Println(f.Cds())
 }
 
 
@@ -42,3 +45,24 @@ func Asd(o Oertex) float64 {
 
 }
 
+
+
+// Methods continued
+// structの型だけでなく、任意の型(type)にもメソッドを宣言できる。
+type MyFloat float64
+
+// Cbsメソッドを持つ、数値型の『MyFloat型』
+// レシーバを伴うメソッドの宣言は、レシーバ型が『同じパッケージにある』必要がある。
+// （ここでは『learn_methods』パッケージ。
+func (f MyFloat) Cds() float64 {
+
+	if f < 0 {
+		return float64(-f)
+	}
+
+	return float64(f)
+
+}
+
+// 他のパッケージに定義している方に対して、レシーバを伴うメソッドを宣言できない。
+// (組み込みのint等の型も同様。)
