@@ -32,6 +32,10 @@ func MainMethod() {
 
 	f := MyFloat(-math.Sqrt2)
 	fmt.Println(f.Cds())
+
+	s := Pertex{3, 4}
+	s.Scale(10)
+	fmt.Println(s.Pbs(), "pointer receivers")
 }
 
 
@@ -66,3 +70,28 @@ func (f MyFloat) Cds() float64 {
 
 // 他のパッケージに定義している方に対して、レシーバを伴うメソッドを宣言できない。
 // (組み込みのint等の型も同様。)
+
+
+
+// Pointer Receviers
+type Pertex struct {
+	X, Y float64
+}
+
+func (p Pertex) Pbs() float64 {
+
+	return math.Sqrt(p.X*p.X + p.Y*p.Y)
+
+}
+
+// ポインタレシーバでメソッドを宣言できる。
+// *Pertexに"Scale"メソッドが定義されている。
+func (p *Pertex) Scale(f float64) {
+
+	// ポインタレシーバを持つメソッド(ここではScale)は、レシーバを指す変数を変更できる。
+	// レシーバ自信を更新することが多いため、変数レシーバよりもポインタレシーバの方が一般的。
+	p.X = p.X * f
+	p.Y = p.Y * f
+
+}
+
