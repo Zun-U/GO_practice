@@ -36,6 +36,7 @@ func Main() {
 	Mapmut()
 	MathFn()
 	AdderCL()
+	PrintZertexStruct()
 }
 
 // Pointer
@@ -156,6 +157,13 @@ var (
 	// structへのポインタを戻す。
 	p = &Zertex{1, 2}
 )
+
+func PrintZertexStruct() {
+	fmt.Println(v1, "Zertex型")
+	fmt.Println(v2, "ZertexのXだけ")
+	fmt.Println(v3, "ZertexのX、Yが暗黙的に0と宣言されている")
+	fmt.Println(p, "ポインタ")
+}
 
 // Arrays
 func PremsArr() {
