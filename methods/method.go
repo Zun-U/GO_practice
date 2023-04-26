@@ -36,6 +36,12 @@ func MainMethod() {
 	s := Pertex{3, 4}
 	s.Scale(10)
 	fmt.Println(s.Pbs(), "pointer receivers")
+
+
+	r := Rertex{3,4}
+	RScale(&r, 10)
+	fmt.Println(Rds(r))
+
 }
 
 
@@ -95,3 +101,25 @@ func (p *Pertex) Scale(f float64) {
 
 }
 
+
+
+// Pointers and functions
+type Rertex struct {
+	X, Y float64
+}
+
+// 上記「Pbs」を関数に書き直している。
+func Rds(r Rertex) float64 {
+	return math.Sqrt(r.X*r.X + r.Y*r.Y)
+}
+
+// 上記「Scale」を関数として書き直している。
+func RScale(r *Rertex, f float64) {
+
+	r.X = r.X * f
+	fmt.Println(r.X, "ポインタ")
+
+	r.Y = r.Y * f
+	fmt.Println(r.Y, "ポインタ")
+
+}

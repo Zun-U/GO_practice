@@ -227,10 +227,10 @@ func SlaR() {
 	// スライスの要素を変更すると、そのもととなる配列の対応する要素が変更される。
 	b[0] = "XXX" // before change, b[0] = "mikan"
 
-	fmt.Println(a, b)
+	fmt.Println(a, b, "スライスの要素が変更された >>> b[0]")
 
 	// 同じ元となる配列を共有している他のスライスは、それらの変更が反映される。
-	fmt.Println(names)
+	fmt.Println(names, "スライスの変更が元の配列に影響を与える")
 }
 
 // 　❐❐ Slice literals
@@ -273,7 +273,7 @@ func SliDef() {
 	s := []int{22, 33, 55, 77, 111, 131}
 
 	s = s[1:4]
-	fmt.Println(s) //s[0] = 33, s[1] = 55, s[2] = 77
+	fmt.Println(s) //s[0] = 33, s[1] = 55, s[2] = 77  // 元の配列のindex番号1~3の値
 
 	s = s[:2]
 	fmt.Println(s) //s[0] = 33, s[1] = 55
@@ -327,7 +327,7 @@ func NilS() {
 	// スライスのゼロ値は『nil』。
 	// nilスライスは『0』の長さと容量を持ち、何の元となる配列を持っていない。
 	var c []int
-	fmt.Println(c, len(c), cap(c))
+	fmt.Println(c, ">>>スライスのゼロ値", len(c), ">>>len", cap(c), ">>>cap", "[スライスのゼロ値はnil。nilは0の長さと容量]")
 
 	if c == nil {
 		fmt.Println("nil")
@@ -340,7 +340,7 @@ func CreateSlice() {
 
 	// スライスは、組み込みの『make』関数を使用して作成可能。
 	// 動的サイズの配列を作成する方法になる。
-	// 『make』関数はゼロ化された配列を”割り当て”、その配列を指すスライスを”返す”。
+	// 『make』関数はゼロ化された配列を”割り当て”、その配列を指す『スライス』を”返す”。
 	a := make([]int, 5)
 	printSliceX("a", a)
 
