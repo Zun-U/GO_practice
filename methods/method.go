@@ -42,6 +42,18 @@ func MainMethod() {
 	RScale(&r, 10)
 	fmt.Println(Rds(r))
 
+	d := Douvlex{3, 4}
+	d.DScale(2)
+	DScaleFunc(&d, 10)
+
+
+	dd := &Douvlex{4, 3}
+	dd.DScale(3)
+	DScaleFunc(dd, 8)
+
+	fmt.Println(d, dd)
+
+
 }
 
 
@@ -123,3 +135,22 @@ func RScale(r *Rertex, f float64) {
 	fmt.Println(r.Y, "ポインタ")
 
 }
+
+
+
+// Methods and pointer indirection
+
+type Douvlex struct {
+	X, Y float64
+}
+
+func (d *Douvlex) DScale(f float64) {
+	d.X = d.X * f
+	d.Y = d.Y * f
+}
+
+func DScaleFunc(d *Douvlex, f float64) {
+	d.X = d.X * f
+	d.Y = d.Y * f
+}
+
