@@ -154,3 +154,4 @@ func DScaleFunc(d *Douvlex, f float64) {
 	d.Y = d.Y * f
 }
 
+

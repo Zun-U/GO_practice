@@ -53,7 +53,7 @@ func PointerExample(z int) {
 
 	fmt.Println(p, "変数zのアドレス（メモリの格納場所）")
 
-	fmt.Println(*p, "ポインタ変数の中身")
+	fmt.Println(*p, "変数pの中身 => 変数zのメモリのアドレス ⇒ 'a'")
 
 }
 
