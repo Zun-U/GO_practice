@@ -149,9 +149,16 @@ func (d *Douvlex) DScale(f float64) {
 	d.Y = d.Y * f
 }
 
+// 引数がポインタ
 func DScaleFunc(d *Douvlex, f float64) {
 	d.X = d.X * f
 	d.Y = d.Y * f
 }
 
 
+// :::::::::::::::::::::::::::::::::::::::::
+// 下の二つの呼び出しを比べると、ポインタを引数にとるDscaleFunc関数は、ポインタを渡す必要があることに気づく
+// var v Vertex
+// DscaleFunc(v, 5) >>> Compile error!
+// DscaleFunc(&v, 5) >>> OK
+// :::::::::::::::::::::::::::::::::::::::::
