@@ -80,20 +80,64 @@ import (
 // 呼び出すのには、関数の名前を再度指定する必要がある
 func main() {
 
-	// Print関数を使用するのには、「Print」どこから来たかGOに教える必要がある
-	// ここでは「fmtパッケージのPrint関数」
-	fmt.Println("Welcome to our conference booking application")
-	fmt.Println("Get your tickets here to attend")
-
-
-
 
 	// ::::  Variable  ::::
 	//
 	// 「var」キーワードで変数を宣言することができる
 	// 以下では、変数「name」から値を参照できるようになった
 	// 変数名の命名は具体的で、明確にする（ここではキャメルケース）
-	var conferenceName = "Go Conference"
+	//
+	// ☆☆☆　慣例として、変数は関数の始まりに定義する　☆☆☆
+	//
+	// 変数宣言の代替構文
+	conferenceName := "Go Conference"
+
+
+	// ::::  Constnats  ::::
+	//
+	// 「const」キーワードで定数を宣言することができる
+	// 一度定義したら、値は変わらない(変更できない)
+	// ※「定数は」値の変更が"許可"されていないと言える
+	// ※ 定数は暗黙的な宣言が出来ない
+	const conferenceTickets int = 50
+
+
+	// ❐❐❐　GOは値に基づくデータ型を判断できる　❐❐❐
+	// ☆ 暗示的変数宣言、定数宣言
+	//
+	// *** 型を明示する場合は、「var」による変数宣言を行う ***
+	var remaningTickets uint = 50
+
+	// ☆☆☆　型には変数の値を保護する役割がある　☆☆☆
+	// 「int」　正・負の整数
+	// 「uint」 正の整数"のみ"
+	// なので、数値型だけでもたくさん種類がある(int8 int32、float32、float64...)
+	//
+	// float型は統計データや比較、金銭的な値などによく使用される　>>> 『浮動小数点数は高精密』
+
+
+
+
+	// 「%T」 - 任意のタイプを出力する
+	fmt.Printf("ConferenceTickets is %T, remainingTickets is %T, conferenceName is %T\n", conferenceTickets, remaningTickets, conferenceName)
+
+	// Print関数を使用するのには、「Print」どこから来たかGOに教える必要がある
+	// ここでは「fmtパッケージのPrint関数」
+	// ※カンマ区切りで変数を挿入することができる。その際、変数の前後に「スペースが」挿入される
+	// ☆☆☆　そしてPrintlnは自動で改行する（新しい行に出力する）　☆☆☆
+	// fmt.Println("Welcome to", conferenceName, "booking application")
+
+
+	// ❐　printf　❐
+	// フォーマットされたデータを出力する
+	// 「%v」 - プレースホルダー。のちに渡す引数の値が格納される。「変数参照」
+	// ※変数のフォーマットを行っている。%vは対応する引数から参照する
+	// 「\n」 - 改行を表す
+	fmt.Printf("Welcome to %v booking application\n", conferenceName)
+
+	// fmt.Println("We have total of", conferenceTickets, "tickets and", remaningTickets, "are still available.")
+	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remaningTickets)
+	fmt.Println("Get your tickets here to attend")
 
 
 	// GO特有の文化
@@ -101,7 +145,17 @@ func main() {
 	// ❐❐❐ パッケージも同様に、使用されていないパッケージが宣言されているとエラーが発生する　❐❐❐
 
 
-	fmt.Println(conferenceName)
+
+
+	// Data Types
+	var userName string
+	// ask user for the name
+	var userTicket int
+
+	userName = "Tom"
+	userTicket = 2
+
+	fmt.Printf("User %v booked %v tickets.\n", userName, userTicket)
 
 }
 
@@ -131,6 +185,9 @@ func main() {
 //
 // 例) go run tutorial.go
 // ☆☆☆☆☆☆☆☆☆☆☆☆
+
+
+
 
 
 
