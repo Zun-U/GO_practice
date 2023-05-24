@@ -77,7 +77,7 @@ import (
 
 
 // 『main』functionはGO言語におけるentry point
-// 呼び出すのには、関数の名前を再度指定する必要がある
+// main関数（エントリーポイント）以外の関数は、呼び出すのに関数の名前を再度指定する必要がある
 func main() {
 
 
@@ -108,13 +108,12 @@ func main() {
 	// *** 型を明示する場合は、「var」による変数宣言を行う ***
 	var remaningTickets uint = 50
 
-	// ☆☆☆　型には変数の値を保護する役割がある　☆☆☆
+	// ☆☆☆☆☆　型には変数の値を保護する役割がある　☆☆☆☆☆
 	// 「int」　正・負の整数
-	// 「uint」 正の整数"のみ"
+	// 「uint」 符号なし整数"のみ"
 	// なので、数値型だけでもたくさん種類がある(int8 int32、float32、float64...)
 	//
 	// float型は統計データや比較、金銭的な値などによく使用される　>>> 『浮動小数点数は高精密』
-
 
 
 
@@ -148,14 +147,55 @@ func main() {
 
 
 	// Data Types
-	var userName string
+	var firstName string
+	var lastName string
+	var email string
 	// ask user for the name
 	var userTicket int
 
-	userName = "Tom"
-	userTicket = 2
+	fmt.Println("Enter your first name: ")
+	fmt.Scan(&firstName)
 
-	fmt.Printf("User %v booked %v tickets.\n", userName, userTicket)
+	// ask user for their name
+	// fmtパッケージは、入出力機能が搭載されている。「Scan」はその入力機能の内の一つ
+
+
+	// >>>>>>>>>>>>>    pointer     >>>>>>>>>>>>>>>>>
+	// 変数に値を代入するときに、実際にその値は『メモリ』に保存される
+	//
+	// その値を参照する『たび』に、GOのコンパイラがメモリ内でその値を見つけに行く必要がある為、
+	// 『メモリ内の正確な場所を知る必要がある』　=>  "メモリアドレス"
+	//
+	// pointerはその値のメモリアドレスを指す『変数』
+	// pointerはgolangでは特殊変数と呼ばれる
+	//
+	// &userName -> 変数「userName」のpointer(userNameにメモリアドレスであるハッシュが格納されている変数)
+	//
+	//
+	// 「var userName string」の変数宣言では、"値が入っていない"
+	//
+	// 「fmt.Scan(&userName)」には、メモリアドレスを渡す。
+	// ユーザーが入力したものはすべて読み取られ、その値をメモリ内の変数に"割り当てる"。
+	//
+	// つまり、Scan関数は、渡された引数のメモリアドレスに値を割り当てる関数である
+	//
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+	fmt.Println("Enter your last name: ")
+	fmt.Scan(&lastName)
+
+
+	fmt.Println("Enter your email: ")
+	fmt.Scan(&email)
+
+
+	fmt.Println("Enter number of tickets: ")
+	fmt.Scan(&userTicket)
+
+
+
+	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v.\n", firstName, lastName, userTicket, email)
 
 }
 
