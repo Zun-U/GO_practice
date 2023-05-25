@@ -108,6 +108,8 @@ func main() {
 	// *** 型を明示する場合は、「var」による変数宣言を行う ***
 	var remaningTickets uint = 50
 
+
+	//
 	// ☆☆☆☆☆　型には変数の値を保護する役割がある　☆☆☆☆☆
 	// 「int」　正・負の整数
 	// 「uint」 符号なし整数"のみ"
@@ -146,12 +148,14 @@ func main() {
 
 
 
+
+
 	// Data Types
 	var firstName string
 	var lastName string
 	var email string
 	// ask user for the name
-	var userTicket int
+	var userTicket uint
 
 	fmt.Println("Enter your first name: ")
 	fmt.Scan(&firstName)
@@ -193,9 +197,24 @@ func main() {
 	fmt.Println("Enter number of tickets: ")
 	fmt.Scan(&userTicket)
 
+	remaningTickets = remaningTickets - userTicket
+	// 「uint」型と「int」型と型が異なる為、計算することができない
+
+	// ++++++++++++++ 配列 ++++++++++++++++
+	// ❐ 配列の初期化に必要なのは『サイズ』❐
+	// 角括弧([])でサイズを指定する
+	// 指定したサイズ分の『要素』を格納できる
+	//
+	// ❐ そしてもう一つ定義する必要があるのは、『型』
+	//
+	// ❐ 配列は初期化して使う ❐
+	var bookings [50]string
+
+	bookings[0] = firstName + " " + lastName
 
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v.\n", firstName, lastName, userTicket, email)
+	fmt.Printf("%v tickets remaining for %v\n", remaningTickets, conferenceName)
 
 }
 
@@ -231,6 +250,6 @@ func main() {
 
 
 
-
+// 配列とスライスと呼ばれるデータ型
 
 
