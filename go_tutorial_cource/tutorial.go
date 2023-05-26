@@ -136,6 +136,7 @@ func main() {
 	// 「\n」 - 改行を表す
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
 
+
 	// fmt.Println("We have total of", conferenceTickets, "tickets and", remaningTickets, "are still available.")
 	fmt.Printf("We have total of %v tickets and %v are still available.\n", conferenceTickets, remaningTickets)
 	fmt.Println("Get your tickets here to attend")
@@ -146,7 +147,10 @@ func main() {
 	// ❐❐❐ パッケージも同様に、使用されていないパッケージが宣言されているとエラーが発生する　❐❐❐
 
 
-
+	// [[[[[[[[[  for loop  ]]]]]]]]]
+	for i := 0; i < count; i++ {
+		
+	}
 
 
 
@@ -212,9 +216,34 @@ func main() {
 
 	bookings[0] = firstName + " " + lastName
 
+	fmt.Printf("The whole array: %v\n", bookings)
+	fmt.Printf("The first value:%v\n", bookings[0])
+	fmt.Printf("Array type:%T\n", bookings[0])     // 「%T」　型を出力する
+	fmt.Printf("Array length:%v\n", len(bookings)) // 「len」関数　配列の長さを出力する　※Goの組み込み関数
+
+
+
+	// ************* スライス *****************
+	// ❐ スライスの定義は、『長さ』を指定しない配列 ❐
+	bookingsSlice := []string{}
+	// ※以下の様な宣言方法もある
+	// var bookingsSlice = []string{}
+	// var bookingsSlice []string
+
+	// 「append」関数　スライスに要素を追加する　※Goの組み込み関数
+	bookingsSlice = append(bookingsSlice, firstName + " " + lastName) //　☆☆　『長さ』は自動的に拡張される(Auto Increment)　☆☆
+
+
+	fmt.Printf("The whole slice: %v\n", bookingsSlice)
+	fmt.Printf("The first value:%v\n", bookingsSlice[0])
+	fmt.Printf("Slice type:%T\n", bookingsSlice[0])     // 「%T」　型を出力する
+	fmt.Printf("Slice length:%v\n", len(bookingsSlice)) // 「len」関数　配列の長さを出力する　※Goの組み込み関数
+
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v.\n", firstName, lastName, userTicket, email)
 	fmt.Printf("%v tickets remaining for %v\n", remaningTickets, conferenceName)
+
+	fmt.Printf("These are all our bookings: %v\n", bookingsSlice)
 
 }
 
