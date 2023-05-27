@@ -225,7 +225,7 @@ func main() {
 
 	// ************* スライス *****************
 	// ❐ スライスの定義は、『長さ』を指定しない配列 ❐
-	bookingsSlice := []string{}
+	bookingsSlice := []string{} // ショートカット構文
 	// ※以下の様な宣言方法もある
 	// var bookingsSlice = []string{}
 	// var bookingsSlice []string
@@ -243,6 +243,12 @@ func main() {
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v.\n", firstName, lastName, userTicket, email)
 	fmt.Printf("%v tickets remaining for %v\n", remaningTickets, conferenceName)
 
+	firstName := []string{}
+
+	// 『range』　要素の反復処理ができる
+	for index, booking := range bookings { // ❐ 『index』は基本的に要素の位置を表す ❐
+		
+	}
 	fmt.Printf("These are all our bookings: %v\n", bookingsSlice)
 
 }
