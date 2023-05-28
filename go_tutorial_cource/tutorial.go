@@ -19,17 +19,12 @@
 // 実行するCPUやRAM等の使用するリソースが少ない（効率的である）
 // ☆☆☆☆☆☆☆☆☆☆☆☆
 
-
-
-
 // GOの導入
 // 1.goコンパイラが必要
 // 2.IDE等の統合環境
 
-
 // GOのインストール
 // https://go.dev/doc/install
-
 
 // ::::::::::::::::::::::::::
 // GOのアプリケーションにする
@@ -41,7 +36,6 @@
 // 例) go mod init booking-app
 // ::::::::::::::::::::::::::
 
-
 // ❐❐❐　GOで記述されたすべてのコードは、パッケージに属さなければいけない　❐❐❐
 // ※パッケージで整理される
 //
@@ -49,32 +43,23 @@
 // 1.アプリケーション全体にわたるパッケージ
 // 2.独自のアプリケーションを作成するときのパッケージ
 
-
-
 // GOアプリケーションの『最初の行』にパッケージを定義する
 // アプリケーションはそのパッケージの一部となる
 // GOのパッケージは必ずmainから始まる（初めにmainを通る）
 package main
 
-
-
-
-
-
 // 「Print」関数は、GOの組み込みパッケージ「fmt」、または「format」に属している。
 // ❐❐❐  使用するのには、元のパッケージをインポートする必要がある  ❐❐❐
 import (
 	"fmt"
+	"strings"
 )
-
 
 // GOはどこで実行するか
 // コンパイラの開始点の最初の行
 
 // アプリケーションのエントリーポイント
 // Goアプリケーションを実行するとき、出発点(エントリーポイント)が必要
-
-
 
 // 『main』functionはGO言語におけるentry point
 // main関数（エントリーポイント）以外の関数は、呼び出すのに関数の名前を再度指定する必要がある
@@ -148,9 +133,9 @@ func main() {
 
 
 	// [[[[[[[[[  for loop  ]]]]]]]]]
-	for i := 0; i < count; i++ {
+	// for i := 0; i < count; i++ {
 		
-	}
+	// }
 
 
 
@@ -243,13 +228,14 @@ func main() {
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v.\n", firstName, lastName, userTicket, email)
 	fmt.Printf("%v tickets remaining for %v\n", remaningTickets, conferenceName)
 
-	firstName := []string{}
+	firstNames := []string{}
 
 	// 『range』　要素の反復処理ができる
-	for index, booking := range bookings { // ❐ 『index』は基本的に要素の位置を表す ❐
-		
+	for _, booking := range bookingsSlice { // ❐ 『index』は基本的に要素の位置を表す ❐
+		var names = strings.Fields(booking)
+		firstName = append(firstNames, names[0])
 	}
-	fmt.Printf("These are all our bookings: %v\n", bookingsSlice)
+	fmt.Printf("The first names of bookings are: %v\n", firstNames)
 
 }
 
